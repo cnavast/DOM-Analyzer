@@ -1,6 +1,10 @@
-function analyzeDOM(e, criteria) {
+/**
+ * @param {Element} e
+ * @param {String} order : order by criteria ('nodes', 'depth' or 'length')
+ */
+function analyzeDOM(e, order) {
 	e = e || document;
-	criteria = criteria || 'length';
+	order = order || 'length';
 	var data = {
 		'element': e,
 		'nodes': e.children.length,
@@ -15,7 +19,7 @@ function analyzeDOM(e, criteria) {
 
 	var maxDepth = 0;
 	for (var i = 0; i < e.children.length; i++) {
-		var child = analyzeDOM(e.children[i], criteria);
+		var child = analyzeDOM(e.children[i], order);
 		maxDepth = child.depth > maxDepth ? child.depth : maxDepth;
 		data.nodes += child.nodes;
 
@@ -25,10 +29,10 @@ function analyzeDOM(e, criteria) {
 	data.depth += maxDepth;
 
 	data.children.sort(function(a,b) {
-		if (a[criteria] < b[criteria]){
+		if (a[order] < b[order]){
 			return 1;
 		}
-		if (a[criteria] > b[criteria]){
+		if (a[order] > b[order]){
 			return -1;
 		}
 		return 0;
