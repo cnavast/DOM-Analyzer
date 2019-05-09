@@ -1,8 +1,8 @@
 /**
- * @param {Element} e
  * @param {String} order : order by criteria ('nodes', 'depth' or 'length')
+ * @param {Element} e
  */
-function analyzeDOM(e, order) {
+function analyzeDOM(order, e) {
 	e = e || document;
 	order = order || 'length';
 	var data = {
@@ -19,7 +19,7 @@ function analyzeDOM(e, order) {
 
 	var maxDepth = 0;
 	for (var i = 0; i < e.children.length; i++) {
-		var child = analyzeDOM(e.children[i], order);
+		var child = analyzeDOM(order, e.children[i]);
 		maxDepth = child.depth > maxDepth ? child.depth : maxDepth;
 		data.nodes += child.nodes;
 
