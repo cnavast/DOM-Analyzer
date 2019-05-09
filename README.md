@@ -1,5 +1,5 @@
 # DOM-Analyzer
-This script comes handy when you want to optimize your DOM, for speed or SEO purposes. It just recreates the DOM in a JS object, ordering each level by the criteria you choose.
+This script comes handy when you want to optimize your DOM, for speed or SEO purposes. It just recreates the DOM in a JS object, ordering each level by the criteria you choose. It's useful to find nodes that are specially heavy or have too many children (which is usually bad when comes to render the page).
 ## Criteria
 - nodes: Number of nodes that are behind the current node.
 - depth: max. depth of the children nodes / max. no. of levels.
