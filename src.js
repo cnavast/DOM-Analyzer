@@ -10,7 +10,7 @@ function analyzeDOM(order, e) {
 		'nodes': e.children.length,
 		'depth': 1,
 		'length': e.outerHTML ? e.outerHTML.replace(/\s/g, '').length : 'NA',
-		'children': []
+		'_children': []
 	};
 
 	if (!e.children.length) {
@@ -23,12 +23,12 @@ function analyzeDOM(order, e) {
 		maxDepth = child.depth > maxDepth ? child.depth : maxDepth;
 		data.nodes += child.nodes;
 
-		data.children.push(child);
+		data._children.push(child);
 	}
 
 	data.depth += maxDepth;
 
-	data.children.sort(function(a,b) {
+	data._children.sort(function(a,b) {
 		if (a[order] < b[order]){
 			return 1;
 		}
